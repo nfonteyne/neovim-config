@@ -3,6 +3,12 @@ vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.mouse = "a" -- allow the mouse to be used in Nvim
 
+-- tabs & indentation
+vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+vim.opt.shiftwidth = 2 -- 2 spaces for indent width
+vim.opt.expandtab = true -- expand tab to spaces
+vim.opt.autoindent = true -- copy indent from current line when starting nf one
+
 -- UI config
 vim.g.have_nerd_font = true
 vim.opt.number = true -- show absolute number
