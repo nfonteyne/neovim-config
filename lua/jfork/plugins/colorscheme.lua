@@ -1,5 +1,4 @@
 return {
-{
   'ribru17/bamboo.nvim',
   lazy = false,
   priority = 1000,
@@ -7,5 +6,4 @@ return {
     require('bamboo').setup {}
     require('bamboo').load()
   end,
-},
 }
