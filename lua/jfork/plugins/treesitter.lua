@@ -40,6 +40,7 @@ return {
 	       "query",
 	       "vimdoc",
 	       "c",
+         "http",
 	       -- "svelte",
 	       -- "prisma",
 	       -- "tsx",

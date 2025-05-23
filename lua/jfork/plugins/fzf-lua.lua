@@ -4,7 +4,23 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   -- or if using mini.icons/mini.nvim
   -- dependencies = { "echasnovski/mini.icons" },
-  opts = {},
+  opts = {
+    -- Add custom configuration for diagnostics_document
+    diagnostics_document = {
+      winopts = {
+        -- Use a single fullscreen window instead of split
+        fullscreen = true,
+        -- Or customize dimensions if you prefer
+        -- height = 0.9,
+        -- width = 0.8,
+        -- You can also change the preview layout
+        preview = {
+          layout = "vertical",     -- or "horizontal"
+          vertical = "down:60%"    -- preview on bottom taking 60% height
+        }
+      }
+    }
+  },
       config = function()
       -- Set up the keymaps after the plugin is loaded
       local map = vim.keymap.set
