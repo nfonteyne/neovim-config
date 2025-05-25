@@ -1,20 +1,13 @@
--- return {
---     'goolord/alpha-nvim',
---     config = function ()
---         require'alpha'.setup(require'alpha.themes.dashboard'.config)
---     end
--- }
---
 return {
     'goolord/alpha-nvim',
     config = function()
         local alpha = require("alpha")
         local dashboard = require("alpha.themes.dashboard")
-        
+
         -- Define your custom highlight groups
         vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#61AFEF" })
         vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#98C379" })
-        
+
         -- Set header with ASCII art
         dashboard.section.header.val = {
             "                                                     ",
@@ -25,14 +18,40 @@ return {
             "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
             "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
             "                                                     ",
+      -- the ascii art below should be on the right of the screen
+            -- "                                                      ",
+            -- "                +=                                    ",
+            -- "             =@ :*                                    ",
+            -- "            *  * %                                    ",
+            -- "           +     #+                                   ",
+            -- "          =+ . ::++=                                  ",
+            -- "          =+      := .@#@@#                           ",
+            -- "           *.      .+   @+                            ",
+            -- "          ++ * :...: #@=      ==                      ",
+            -- "         #  =+ ====          *+  *+                   ",
+            -- "        #@*.+=     ==        +#: . ++                 ",
+            -- "        @ %*%#@+% +  =% ..+*####****@@*               ",
+            -- "        @  +*    :     %  :############=*#            ",
+            -- "        %*= +  *%%####*=    .*####*+=     =*          ",
+            -- "         @########=          =##*:          *=        ",
+            -- "      =#@*@%#####=                           *        ",
+            -- "      =%=:=%@%###.              .@@:        +=        ",
+            -- "          +%@%@%#.      :#*.    :@@@@      %+         ",
+            -- "                +@+:.   ####%+         :+%=           ",
+            -- "                    *@@#=       +:==+%*               ",
+            -- "                     @.=..  .  **=                    ",
+            -- "                     =@=  =  .+#                      ",
+            -- "                        =%@@@@=                       ",
+            -- "                                                      ",
+            -- "                                                      ",
         }
-        
+
         -- Use simple highlighting (entire section)
         dashboard.section.header.opts = {
             position = "center",
             hl = "AlphaHeader"
         }
-        
+
         -- Set up buttons for FZF
         dashboard.section.buttons.val = {
             dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -43,11 +62,10 @@ return {
             dashboard.button("l", "  Lazy", ":Lazy<CR>"),
             dashboard.button("q", "  Quit", ":qa<CR>"),
         }
-        
+
         dashboard.section.buttons.opts.hl = "AlphaButtons"
-        
+
         -- Set up alpha
         alpha.setup(dashboard.opts)
     end
 }
-
