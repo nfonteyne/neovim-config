@@ -1,3 +1,4 @@
+-- NOTE: documentation : https://github.com/rest-nvim/rest.nvim
 return {
   {
     "vhyrro/luarocks.nvim",
