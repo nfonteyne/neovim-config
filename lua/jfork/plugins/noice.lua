@@ -4,7 +4,7 @@ return {
   opts = {
       routes = {
       {
-        view = "notify", -- or another view of your choice
+        view = "cmdline", -- or another view of your choice
         filter = { event = "msg_showmode" },
       },
     }, 
