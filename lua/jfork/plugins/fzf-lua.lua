@@ -30,5 +30,7 @@ return {
       map('n', '<leader>sg', '<cmd>FzfLua live_grep<CR>', { desc = 'Live grep' })
       map('n', '<leader>sb', '<cmd>FzfLua buffers<CR>', { desc = 'Buffers' })
       map('n', '<leader>sh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
+      map('n', "<leader>sk", "<cmd>FzfLua keymaps<cr>", {desc = "Key Maps"})
+      map('n', "<leader>sM", "<cmd>FzfLua man_pages<cr>", {desc = "Man Pages"})
     end,
 }
