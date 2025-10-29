@@ -7,7 +7,7 @@ return {
         view = "cmdline", -- or another view of your choice
         filter = { event = "msg_showmode" },
       },
-    }, 
+    },
   },
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
