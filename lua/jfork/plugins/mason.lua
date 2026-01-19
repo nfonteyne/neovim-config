@@ -28,7 +28,7 @@ return {
         "html",
         "cssls",
         "lua_ls",
-        "pyright",
+        "ty",
       },
     })
   end,

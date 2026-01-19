@@ -32,5 +32,6 @@ return {
       map('n', '<leader>sh', '<cmd>FzfLua help_tags<CR>', { desc = 'Help tags' })
       map('n', "<leader>sk", "<cmd>FzfLua keymaps<cr>", {desc = "Key Maps"})
       map('n', "<leader>sM", "<cmd>FzfLua man_pages<cr>", {desc = "Man Pages"})
+      map('n', "<leader>sc", "<cmd>FzfLua colorschemes<cr>", {desc = "colorscheme"})
     end,
 }

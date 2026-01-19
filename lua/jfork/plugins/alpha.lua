@@ -54,7 +54,7 @@ return {
 
         -- Set up buttons for FZF
         dashboard.section.buttons.val = {
-            dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+            -- dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
             dashboard.button("f", "  Find files", ":FzfLua files<CR>"),
             dashboard.button("g", "  Live grep", ":FzfLua live_grep<CR>"),
             dashboard.button("r", "  Recent files", ":FzfLua oldfiles<CR>"),
