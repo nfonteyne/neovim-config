@@ -35,6 +35,32 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
--- vim.keymap.set('n', 'gd', function()
---   vim.lsp.buf.definition()
--- end, opts)
+-----------------
+-- LSP keymaps --
+-----------------
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local function opts(desc)
+      return { buffer = ev.buf, silent = true, desc = 'LSP ' .. desc }
+    end
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('Go to definition'))
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration'))
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts('Go to references'))
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts('Hover documentation'))
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts('Rename symbol'))
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('Code action'))
+
+    -- Force pull diagnostics for servers like ty
+    vim.schedule(function()
+      local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      if client and client.server_capabilities.diagnosticProvider then
+        client.request('textDocument/diagnostic', {
+          textDocument = vim.lsp.util.make_text_document_params(ev.buf),
+        }, nil, ev.buf)
+      end
+    end)
+
+  end,
+})
