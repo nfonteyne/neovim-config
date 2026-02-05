@@ -14,6 +14,25 @@ return {
                     go_out_plus = "H",
                 },
             })
+
+            -- Create an autocommand to set buffer-local mappings when mini.files opens
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'MiniFilesBufferCreate',
+                callback = function(args)
+                    local b = args.data.buf_id
+
+                    -- Map 'gy' to copy the file path to the clipboard
+                    vim.keymap.set('n', 'gy', function()
+                        local entry = MiniFiles.get_fs_entry()
+                        if entry then
+                            vim.fn.setreg('+', entry.path) -- Copy to system clipboard
+                            vim.notify('Copied path: ' .. entry.path)
+                            MiniFiles.close() -- Close explorer to return to code
+                        end
+                    end, { buffer = b, desc = 'Copy path to clipboard' })
+                end,
+            })
+
             vim.keymap.set("n", "<leader>ee", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle mini file explorer" }) -- toggle file explorer
             vim.keymap.set("n", "<leader>ef", function()
                 MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
